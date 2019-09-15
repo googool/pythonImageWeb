@@ -11,10 +11,15 @@ import json
 
 @app.route('/')
 def index():
-    images = Image.query.order_by(db.desc(Image.id)).limit(10).all()
-    # images = Image.query.order_by('-id').limit(10).all()
-    # images = Image.query.order_by('id desc').limit(10).all()
-    return render_template('index.html', images=images)
+    paginate = Image.query.all().paginate(page=0, per_page=10)
+
+    map = {'has_next': paginate.has_next}
+    images = []
+    for image in paginate.items:
+        imgvo = {'id': image.id, 'url': image.url, 'comment_count': len(image.comments)}
+        images.append(imgvo)
+    map['images'] = images
+    return json.dumps(map)
 
 
 @app.route('/image/<int:image_id>/')
