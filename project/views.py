@@ -11,7 +11,7 @@ import json
 
 @app.route('/')
 def index():
-    images = Image.query.order_by(db.desc(Image.id)).limit(10).all()
+    images = Image.query.order_by(db.desc(Image.id)).limit(20).all()
     # images = Image.query.order_by('-id').limit(10).all()
     # images = Image.query.order_by('id desc').limit(10).all()
     return render_template('index.html', images=images)
