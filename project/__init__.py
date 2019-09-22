@@ -1,12 +1,11 @@
-# -*-coding:utf-8-*-
+#-*-coding:utf-8-*-
 
 from flask import Flask
+from flask_sqlalchemy import SQLAlchemy
+from flask_login import LoginManager
 import pymysql
 
 pymysql.install_as_MySQLdb()
-
-from flask_sqlalchemy import SQLAlchemy
-from flask_login import LoginManager
 
 app = Flask(__name__)
 app.jinja_env.add_extension('jinja2.ext.loopcontrols')

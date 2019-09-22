@@ -1,4 +1,4 @@
-# -*- encoding=UTF-8 -*-
+#-*-coding:utf-8-*-
 
 from project import db, login_manager
 from datetime import datetime
@@ -59,20 +59,23 @@ class User(db.Model):
         return ('<User %d %s>' % (self.id, self.username)).encode('gbk')
 
     # Flask Login接口
+    @property
     def is_authenticated(self):
-        print 'is_authenticated'
+        # print 'is_authenticated'
         return True
 
+    @property
     def is_active(self):
-        print 'is_active'
+        # print 'is_active'
         return True
 
+    @property
     def is_anonymous(self):
-        print 'is_anonymous'
+        # print 'is_anonymous'
         return False
 
     def get_id(self):
-        print 'get_id'
+        # print 'get_id'
         return self.id
 
 
