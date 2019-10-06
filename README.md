@@ -21,7 +21,7 @@ mysql数据库：8.0.11:
              0.0.0.0：
 
     Nginx 配置 /etc/nginx/sites-enabled/c1
-
+    gunicorn -D -w 3 -b 127.0.0.1:8000 project:app
     server{
         listen 80;
         server_name chenjinxin.com;
